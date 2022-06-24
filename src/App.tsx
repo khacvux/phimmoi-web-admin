@@ -1,45 +1,32 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import "./index.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+import AddMoviesPage from "./pages/AddMovies";
+import ListMovies from "./pages/ListMovies";
+import InfoMovie from "./pages/InfoMovie";
+import Signin from "./pages/Signin";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+    <Router>
+      <div className="flex flex-row w-full h-full">
+        <div className=" w-64 h-full">
+          <Navbar />
+        </div>
+        <div className="flex-1 h-screen overflow-hidden flex flex-col">
+          <Header />
+          <Routes>
+            <Route path="/" element={<AddMoviesPage />} />
+            <Route path="list-movies" element={<ListMovies />} />
+            <Route path="info-movie" element={<InfoMovie />} />
+            <Route path="signin" element={<Signin />} />
+          </Routes>
+          
+        </div>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
