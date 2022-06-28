@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <div className=" bg-gray-100 h-screen items-stretch pt-16 flex flex-col justify-between">
+    <div className=" border border-r-slate-300 h-screen items-stretch pt-16 flex flex-col justify-between">
      
       <div className="w-full">
       <Link
@@ -18,17 +18,6 @@ export default function Navbar() {
       >
         <p>Movies</p>
       </Link>
-      </div>
-      
-      <div className="w-full flex items-center justify-center pt-2 flex-col mb-20">
-        
-        <Link className=" bg-white  mt-1 rounded-2xl p-2" to="/signin">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-          className="h-28 w-28 object-cover mb-1 rounded-xl"
-        />
-          <p className="text-center">Sign in</p>
-        </Link>
       </div>
     </div>
   );

@@ -1,19 +1,43 @@
+import { Form, Formik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import InputField from "../../components/InputField";
+import { loginModel } from "../../models/auth";
+import { login } from "../../redux/auth/action";
+
 export default function Signin() {
+  const dispatch = useDispatch();
+
+  const initialValues: loginModel = { email: "", password: "" };
+
+  const handleSubmit = (values: loginModel) => {
+    dispatch(login(values))
+  };
+  const { admin } = useSelector((state: any) => state.auth)
+  console.log(admin)
+
   return (
     <div className="flex flex-col space-y-3 h-full items-center justify-center">
-
-        <input 
-            className=" bg-slate-100 rounded-md py-2 px-3 outline-none w-80"
-            placeholder="Email"
-        />
-         <input 
-            className=" bg-slate-100 rounded-md py-2 px-3 outline-none w-80"
-            placeholder="Password"
-        />
-        <button className=" bg-red-700 w-80 py-3 rounded-md">
-            <p className='text-white font-bold'>Login</p>
-        </button>
-        
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        {({ isSubmitting }) => (
+          <Form className="w-80">
+            <InputField
+              name="email"
+              type="text"
+              placeholder="Email"
+              label={null}
+            />
+            <InputField
+              name="password"
+              type="password"
+              placeholder="Password"
+              label={null}
+            />
+            <button className=" bg-red-600 w-80 py-2 rounded-md" type="submit">
+              <p className="text-white font-bold">Login</p>
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
-  )
+  );
 }

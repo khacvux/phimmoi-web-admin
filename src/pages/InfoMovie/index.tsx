@@ -41,7 +41,7 @@ export default function InfoMovie() {
             event.preventDefault();
             fileInputRef.current?.click();
           }}
-          className="absolute top-1 right-1 bg-red-700 hover:bg-red-600 px-3 py-2 rounded-lg"
+          className="absolute top-1 right-1 bg-red-600 hover:bg-red-300 px-3 py-2 rounded"
         >
           <p className="text-sm text-white">Update</p>
         </button>

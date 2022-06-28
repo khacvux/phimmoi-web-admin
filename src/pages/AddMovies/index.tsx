@@ -1,9 +1,33 @@
+import { Form, Formik } from "formik";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import InputField from "../../components/InputField";
+import { addMovie } from "../../redux/movie/action";
 
 export default function AddMoviesPage() {
-  const [image, setImage] = useState<File>();
+  const dispatch = useDispatch();
+  const [image, setImage] = useState<File | null>();
   const [preview, setPreview] = useState<string>();
   const fileInputRef = useRef<HTMLInputElement>();
+
+  const initialValues = {
+    name: "",
+    id: "",
+    description: "",
+  };
+
+  const handleSubmit = (values: any) => {
+    if (values.name && values.id && values.description && image) {
+      dispatch(
+        addMovie({
+          name: values.name,
+          idMovieDrive: values.id,
+          description: values.description,
+          image: image,
+        })
+      );
+    }
+  };
 
   useEffect(() => {
     if (image) {
@@ -34,9 +58,7 @@ export default function AddMoviesPage() {
           <img
             src={preview}
             className="w-full h-full object-cover"
-            onClick={() => {
-                fileInputRef.current?.click();
-            }}
+            onClick={() => fileInputRef.current?.click()}
           />
         ) : (
           <button
@@ -44,27 +66,47 @@ export default function AddMoviesPage() {
               event.preventDefault();
               fileInputRef.current?.click();
             }}
-            className='w-full h-full'
+            className="w-full h-full"
           >
             Image
           </button>
         )}
       </div>
       <div className="flex-1 mx-4 items-stretch flex flex-col">
-        <p className="mt-1 font-light text-sm">Name Movie</p>
-        <input
-          type="text"
-          className=" bg-slate-50 outline-none rounded-md px-3 py-2"
-        />
-        <p className="mt-3 font-light text-sm">Description</p>
-        <textarea className=" bg-slate-50 outline-none rounded-md px-3 py-2 h-36" />
-
-        <div
-          className=" items-center w-full bg-slate-50 border border-blue-100 justify-center flex py-3 rounded-lg my-8 cursor-pointer hover:bg-blue-400"
-          onClick={() => console.log(123)}
-        >
-          <span className="text-blue-600  text-sm font-medium ">Upload</span>
-        </div>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+          {() => (
+            <Form className="w-full">
+              <InputField
+                name="name"
+                type="text"
+                placeholder="name"
+                label="Name"
+              />
+              <InputField
+                name="id"
+                type="text"
+                placeholder="ID video in google drive"
+                label="ID video in google drive"
+              />
+              <InputField
+                name="description"
+                type="text"
+                textarea
+                placeholder="..."
+                label="Decription"
+              />
+              <button
+                type="submit"
+                className=" items-center w-full bg-slate-50 border border-blue-100 justify-center 
+                flex py-3 rounded-lg my-8 cursor-pointer hover:bg-blue-400"
+              >
+                <span className="text-blue-600  text-sm font-medium ">
+                  Upload
+                </span>
+              </button>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );
