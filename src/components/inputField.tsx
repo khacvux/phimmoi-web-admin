@@ -10,9 +10,9 @@ interface IInputFieldProps {
 const InputField = ({ textarea, ...props }: IInputFieldProps) => {
   const [field, { error }] = useField(props);
   return (
-    <div className="mb-4">
+    <div className="mb-2">
       <label
-        className="block text-gray-700 text-sm font-bold mb-2"
+        className="block text-font text-sm font-bold mb-2"
         htmlFor={field.name}
       >
         {props.label}
@@ -22,14 +22,14 @@ const InputField = ({ textarea, ...props }: IInputFieldProps) => {
           id={field.name}
           value={field.value}
           onChange={field.onChange}
-          className="shadow appearance-none border h-16 rounded w-full py-2 px-3 text-gray-700 
-          leading-tight focus:outline-none focus:shadow-outline"
+          className=" appearance-none h-16 rounded w-full py-2 px-3 text-font
+          leading-tight outline-none bg-dark"
           {...props}
         />
       ) : (
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
-            leading-tight focus:outline-none focus:shadow-outline"
+          className=" appearance-none rounded w-full py-2 px-3 text-font
+            leading-tight outline-none bg-dark"
           id={field.name}
           {...props}
           value={field.value}

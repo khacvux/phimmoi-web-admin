@@ -1,9 +1,9 @@
 import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import InputField from "../components/inputField";
+import InputField from "../components/InputField";
 import { loginModel } from "../models/auth";
-import { login } from "../redux/auth/action";
+import { login } from "../redux/auth/actions";
 
 export default function Signin() {
   const dispatch = useDispatch();

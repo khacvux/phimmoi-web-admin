@@ -1,5 +1,5 @@
 import * as TYPES from "./constants";
-import * as ACTION from "./action";
+import * as ACTION from "./actions";
 import {
   call,
   put,

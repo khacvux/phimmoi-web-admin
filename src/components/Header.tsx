@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { logout } from "../redux/auth/action";
+import { logout } from "../redux/auth/actions";
 
 export default function Header() {
   const { admin } = useSelector((state: any) => state.auth);

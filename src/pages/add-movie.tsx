@@ -1,8 +1,8 @@
 import { Form, Formik } from "formik";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import InputField from "../components/inputField";
-import { addMovie } from "../redux/movie/action";
+import InputField from "../components/InputField";
+import { addMovie } from "../redux/movie/actions";
 
 export default function AddMoviesPage() {
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ export default function AddMoviesPage() {
 
   return (
     <div className="p-3 flex flex-row flex-1">
-      <div className="flex-1 border justify-center overflow-hidden rounded-md">
+      <div className="flex-1 border border-slate justify-center overflow-hidden rounded-md">
         <input
           ref={fileInputRef}
           type="file"
@@ -66,9 +66,12 @@ export default function AddMoviesPage() {
               event.preventDefault();
               fileInputRef.current?.click();
             }}
-            className="w-full h-full"
+            className="w-full h-full items-center flex flex-col justify-center"
           >
+            <p className="bg-bg3 text-font px-10 py-2 rounded">
             Image
+
+            </p>
           </button>
         )}
       </div>
@@ -97,10 +100,10 @@ export default function AddMoviesPage() {
               />
               <button
                 type="submit"
-                className=" items-center w-full bg-slate-50 border border-blue-100 justify-center 
-                flex py-3 rounded-lg my-8 cursor-pointer hover:bg-blue-400"
+                className=" items-center w-full justify-center bg-secondary hover:opacity-60
+                flex py-2 rounded-md my-8 cursor-pointer"
               >
-                <span className="text-blue-600  text-sm font-medium ">
+                <span className="text-font">
                   Upload
                 </span>
               </button>
