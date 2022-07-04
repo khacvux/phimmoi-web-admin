@@ -1,19 +1,22 @@
 import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import InputField from "../../components/InputField";
-import { loginModel } from "../../models/auth";
-import { login } from "../../redux/auth/action";
+import { Navigate } from "react-router-dom";
+import InputField from "../components/inputField";
+import { loginModel } from "../models/auth";
+import { login } from "../redux/auth/action";
 
 export default function Signin() {
   const dispatch = useDispatch();
-
   const initialValues: loginModel = { email: "", password: "" };
 
   const handleSubmit = (values: loginModel) => {
-    dispatch(login(values))
+    dispatch(login(values));
   };
-  const { admin } = useSelector((state: any) => state.auth)
-  console.log(admin)
+  const { admin } = useSelector((state: any) => state.auth);
+
+  if (admin.token) {
+    return <Navigate to="/" replace />
+  }
 
   return (
     <div className="flex flex-col space-y-3 h-full items-center justify-center">

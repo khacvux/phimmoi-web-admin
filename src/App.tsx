@@ -5,26 +5,31 @@ import Store, { persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import AddMoviesPage from "./pages/AddMovies";
-import ListMovies from "./pages/ListMovies";
-import InfoMovie from "./pages/InfoMovie";
-import Signin from "./pages/Signin";
+import AddMoviesPage from "./pages/add-movie";
+import ListMovies from "./pages/list-movie";
+import InfoMovie from "./pages/info-movie";
+import Signin from "./pages/sign-in";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   return (
     <Provider store={Store}>
-      <PersistGate loading={null} persistor={ persistor } >
+      <PersistGate loading={null} persistor={persistor}>
         <Router>
           <div className="flex flex-row w-full h-full">
-            <div className=" w-64 h-full">
+            <div className="h-full">
               <Navbar />
             </div>
             <div className="flex-1 h-screen overflow-hidden flex flex-col">
               <Header />
+              <RequireAuth>
+                <Routes>
+                  <Route path="/" element={<AddMoviesPage />} />
+                  <Route path="list-movies" element={<ListMovies />} />
+                  <Route path="info-movie" element={<InfoMovie />} />
+                </Routes>
+              </RequireAuth>
               <Routes>
-                <Route path="/" element={<AddMoviesPage />} />
-                <Route path="list-movies" element={<ListMovies />} />
-                <Route path="info-movie" element={<InfoMovie />} />
                 <Route path="signin" element={<Signin />} />
               </Routes>
             </div>

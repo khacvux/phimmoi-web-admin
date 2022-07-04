@@ -1,12 +1,12 @@
 import { Form, Formik } from "formik";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import InputField from "../../components/InputField";
-import { addMovie } from "../../redux/movie/action";
+import InputField from "../components/inputField";
+import { addMovie } from "../redux/movie/action";
 
 export default function AddMoviesPage() {
   const dispatch = useDispatch();
-  const [image, setImage] = useState<File | null>();
+  const [image, setImage] = useState<File>();
   const [preview, setPreview] = useState<string>();
   const fileInputRef = useRef<HTMLInputElement>();
 
