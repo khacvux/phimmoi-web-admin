@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { logout } from "../redux/auth/actions";
 
 export default function Navbar() {
@@ -9,38 +9,40 @@ export default function Navbar() {
   const handleLogout = () => {
     dispatch(logout());
   };
-
+  const navLinkStyle = ({ isActive }: any) => (
+    isActive ? "nav-link nav-link-activated" : "nav-link"
+  )
   if (!admin.token) {
     return <></>;
   }
   return (
-    <div className="h-screen items-stretch flex flex-col justify-between w-64 bg-bg2 py-3">
+    <div className="h-screen items-stretch flex flex-col justify-between w-64 bg-bg2 pb-3">
       <div className="w-full">
-        <div className="flex flex-row items-center mx-2 bg-bg3 rounded-md space-x-3 p-2 mb-5">
+        <div className="flex flex-row items-center bg-bg3 space-x-3 px-3 py-5 mb-5">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
             className="h-14 w-14 object-cover rounded-md"
           />
           <p className="text-font w-full ml-4">{admin.name}</p>
         </div>
-        <Link
+        <NavLink
           to="/"
-          className=" py-2 rounded-md mx-2 flex justify-center cursor-pointer text-font bg-bg3 my-1"
+          className={navLinkStyle}
         >
           <p>Add Movie</p>
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/list-movies"
-          className=" py-2 rounded-md mx-2 flex justify-center cursor-pointer text-font bg-bg3 my-1"
+          className={navLinkStyle}
         >
           <p>Movies</p>
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/category"
-          className=" py-2 rounded-md mx-2 flex justify-center cursor-pointer text-font bg-bg3 my-1"
+          className={navLinkStyle}
         >
           <p>Category</p>
-        </Link>
+        </NavLink>
       </div>
       <div
         className="py-2 rounded-md mx-2 flex justify-center cursor-pointer text-font bg-bg3 my-1"

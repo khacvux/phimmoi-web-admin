@@ -15,8 +15,9 @@ export default function AddCategoryPage() {
   const dispatch = useDispatch();
   const { admin } = useSelector((state: any) => state.auth);
   const initialValues: categoryModel = { name: "" };
-  const handleSubmit = (values: categoryModel) => {
+  const handleSubmit = (values: categoryModel, { resetForm }: any) => {
     dispatch(addCategory({ name: values.name, token: admin.token }));
+    resetForm();
   };
 
   useEffect(() => {

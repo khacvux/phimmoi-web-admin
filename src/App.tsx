@@ -11,6 +11,7 @@ import InfoMovie from "./pages/info-movie";
 import Signin from "./pages/sign-in";
 import RequireAuth from "./components/RequireAuth";
 import AddCategoryPage from "./pages/category-movie";
+import 'semantic-ui-css/semantic.min.css'
 
 function App() {
   return (

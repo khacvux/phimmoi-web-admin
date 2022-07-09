@@ -1,13 +1,20 @@
 export interface movieModel {
-    image: File,
+    poster: File,
     name: string,
     description: string,
+    category: string
 }
 
 export interface infoMovieModel extends movieModel {
-    idMovieDrive: string,
+    // idMovieDrive: string,
+    movieUrl: string
 }
 
 export interface addMovieModel extends movieModel {
-    videoInfo: any,
+    movieFile: any,
+}
+
+export interface addMovieSagaModel {
+    type: string,
+    payload: addMovieModel
 }

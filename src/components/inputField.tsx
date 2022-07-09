@@ -12,7 +12,7 @@ const InputField = ({ textarea, ...props }: IInputFieldProps) => {
   return (
     <div className="mb-2">
       <label
-        className="block text-font text-sm font-bold mb-2"
+        className="text-font text-sm font-bold mb-2"
         htmlFor={field.name}
       >
         {props.label}
@@ -28,7 +28,7 @@ const InputField = ({ textarea, ...props }: IInputFieldProps) => {
         />
       ) : (
         <input
-          className=" appearance-none rounded w-full py-2 px-3 text-font
+          className=" appearance-none h-11 rounded w-full py-2 px-4 text-font
             leading-tight outline-none bg-dark"
           id={field.name}
           {...props}
