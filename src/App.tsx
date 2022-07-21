@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import Store, { persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import AddMoviesPage from "./pages/add-movie";
 import ListMovies from "./pages/list-movie";
@@ -11,9 +10,11 @@ import InfoMovie from "./pages/info-movie";
 import Signin from "./pages/sign-in";
 import RequireAuth from "./components/RequireAuth";
 import AddCategoryPage from "./pages/category-movie";
-import 'semantic-ui-css/semantic.min.css'
+import "semantic-ui-css/semantic.min.css";
 
 function App() {
+
+
   return (
     <Provider store={Store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -23,7 +24,6 @@ function App() {
               <Navbar />
             </div>
             <div className="flex-1 h-screen overflow-hidden flex flex-col">
-              {/* <Header /> */}
               <RequireAuth>
                 <Routes>
                   <Route path="/" element={<AddMoviesPage />} />

@@ -74,7 +74,7 @@ export default function AddMoviesPage() {
           type="file"
           accept="image/*"
           className=" hidden"
-          onChange={(event) => {
+          onChange={(event: any) => {
             const file = event.target.files[0];
             if (file && file.type.substr(0, 5) === "image") {
               setImage(file);
@@ -109,7 +109,7 @@ export default function AddMoviesPage() {
                   name="movie"
                   type="file"
                   accept="video/*"
-                  onChange={(event) => {
+                  onChange={(event: any) => {
                     const file = event.target.files[0];
                     if (file && file.type.substr(0, 5) == "video")
                       setMovie(file);

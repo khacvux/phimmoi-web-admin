@@ -1,13 +1,14 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 export default function RequireAuth({ children }: { children: JSX.Element }) {
-    const { admin } = useSelector((state: any)=> state.auth)
-  
+  const { admin } = useSelector((state: any) => state.auth);
+  const navigate = useNavigate()
+  useEffect(() => {
     if (!admin.token) {
-      return <Navigate to="/signin" replace />;
+      navigate('/signin')
     }
-    return children;
-  }
-  
+  }, [admin.token])
+  return children;
+}
