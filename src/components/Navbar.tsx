@@ -31,12 +31,12 @@ export default function Navbar() {
         >
           <p>Add Movie</p>
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/list-movies"
           className={navLinkStyle}
         >
           <p>Movies</p>
-        </NavLink>
+        </NavLink> */}
         <NavLink
           to="/category"
           className={navLinkStyle}

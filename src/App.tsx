@@ -27,7 +27,7 @@ function App() {
               <RequireAuth>
                 <Routes>
                   <Route path="/" element={<AddMoviesPage />} />
-                  <Route path="list-movies" element={<ListMovies />} />
+                  {/* <Route path="list-movies" element={<ListMovies />} /> */}
                   <Route path="info-movie" element={<InfoMovie />} />
                   <Route path="category" element={<AddCategoryPage />} />
                 </Routes>

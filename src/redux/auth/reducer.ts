@@ -2,11 +2,15 @@ import { IAction } from "../../models/action";
 import { userModel } from "../../models/auth";
 import * as TYPES from "./constants";
 
-const initialState = {
+export interface InitialStateModel {
+  admin: userModel;
+}
+
+const initialState: InitialStateModel = {
   admin: {} as userModel,
 };
 
-const reducers = (state = initialState, action: IAction) => {
+const reducers = (state: InitialStateModel = initialState, action: IAction) => {
   switch (action.type) {
     case TYPES.SIGN_IN:
       return {

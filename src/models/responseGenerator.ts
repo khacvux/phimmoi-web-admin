@@ -6,3 +6,9 @@ export default interface ResponseGenerator{
     status?:number,
     statusText?:string
   }
+
+  export interface ResponseModel {
+    successful: boolean,
+    message: string,
+    data: any,
+}

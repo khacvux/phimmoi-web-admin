@@ -5,9 +5,10 @@ interface ICategoryItem {
   name: string;
   _id: string;
   token: string;
+  setActiveCategory: any
 }
 
-function CategoryItem({ name, _id, token }: ICategoryItem) {
+function CategoryItem({ name, _id, token, setActiveCategory }: ICategoryItem) {
   const dispatch = useDispatch();
   const handleRemove = () => {
     dispatch(removeCategory({ _id, token }));
@@ -15,7 +16,7 @@ function CategoryItem({ name, _id, token }: ICategoryItem) {
 
   return (
     <div className="my-2 py-2 px-3 rounded text-sm hover:bg-dark flex flex-row items-center justify-betweenr">
-      <div className="w-full cursor-pointer">
+      <div className="w-full cursor-pointer" onClick={() => setActiveCategory({ name, _id })}>
         <p>{name}</p>
       </div>
       <div

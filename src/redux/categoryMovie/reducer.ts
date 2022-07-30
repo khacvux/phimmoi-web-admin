@@ -2,11 +2,14 @@ import { IAction } from "../../models/action";
 import { categoryModel } from "../../models/categoryMovie";
 import * as TYPES from "./constants";
 
-const initialState = {
-  listCategory: [] as any,
+export interface InitialStateModel {
+  listCategory: any
+}
+const initialState: InitialStateModel = {
+  listCategory: [],
 };
 
-const reducers = (state = initialState, action: IAction) => {
+const reducers = (state: InitialStateModel = initialState, action: IAction) => {
   switch (action.type) {
     case TYPES.ADD_CATEGORY:
       return state;

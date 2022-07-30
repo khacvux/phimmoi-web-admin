@@ -64,3 +64,4 @@ export const removeCategoryFail = (payload: any): IAction => {
         payload
     }
 };
+

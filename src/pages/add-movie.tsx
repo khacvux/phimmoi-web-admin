@@ -35,10 +35,10 @@ export default function AddMoviesPage() {
           category: category,
           poster: image,
           movieFile: movie,
+          token: admin.token
         })
       );
   };
-
   useEffect(() => {
     dispatch(getListCategory(admin.token));
   }, []);

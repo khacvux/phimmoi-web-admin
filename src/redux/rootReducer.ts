@@ -1,11 +1,19 @@
 import { combineReducers } from "redux";
 
-import auth from './auth/reducer'
-import movie from './movie/reducer'
-import category from './categoryMovie/reducer'
+import auth, { InitialStateModel as AuthInterface } from "./auth/reducer";
+import movie, { InitialStateModel as MovieInterface } from "./movie/reducer";
+import category, {
+  InitialStateModel as CategoryInterface,
+} from "./categoryMovie/reducer";
 
-export default combineReducers({
-    auth,
-    movie,
-    category
-})
+export interface RootReducerInterface {
+    auth: AuthInterface,
+    movie: MovieInterface,
+    category: CategoryInterface
+}
+
+export default combineReducers<RootReducerInterface>({
+  auth,
+  movie,
+  category,
+});

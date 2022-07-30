@@ -13,9 +13,9 @@ import ResponseGenerator from "../../models/responseGenerator";
 
 
 function* login(data: any) {
+  const payload = data.payload
   try {
-    console.log("SIGN IN running...");
-    const res:ResponseGenerator = yield call(loginAPI, data.payload)
+    const res:ResponseGenerator = yield call(loginAPI, payload)
     if(res.status == 200) {
       yield put(ACTION.loginSuccess(res.data))
     }
